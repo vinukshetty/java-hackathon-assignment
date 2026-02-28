@@ -14,4 +14,7 @@ public interface WarehouseStore {
   void remove(Warehouse warehouse);
 
   Warehouse findByBusinessUnitCode(String buCode);
+
+  List<Warehouse> search(String location, Integer minCapacity, Integer maxCapacity,
+      String sortBy, String sortOrder, int page, int pageSize);
 }

@@ -102,6 +102,13 @@ public class WarehouseResourceImpl implements WarehouseResource {
     }
   }
 
+  @Override
+  public List<Warehouse> searchWarehouses(String location, Integer minCapacity, Integer maxCapacity,
+      String sortBy, String sortOrder, int page, int pageSize) {
+    return warehouseRepository.search(location, minCapacity, maxCapacity, sortBy, sortOrder, page, pageSize)
+        .stream().map(this::toWarehouseResponse).toList();
+  }
+
   private Warehouse toWarehouseResponse(
       com.fulfilment.application.monolith.warehouses.domain.models.Warehouse warehouse) {
     var response = new Warehouse();
